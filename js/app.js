@@ -54,7 +54,7 @@ function removeListeners() {
   imageContainer.removeEventListener('click', handleClick);
 }
 
-// function to generate random nums
+// function to generate random nums 
 
 function getRandoNum() {
   return Math.floor(Math.random() * ImagesInstance.list.length);
