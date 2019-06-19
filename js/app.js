@@ -20,26 +20,46 @@ ImagesInstance.list = [];
 
 // Change the filepath
 
-new ImagesInstance('./images/bag-rs.png', 'Other Worldly Travel');
-new ImagesInstance('./images/banana-rs.png', 'Go Bananas');
-new ImagesInstance('./images/bathroom-rs.png', 'Never Leave the Bathroom');
-new ImagesInstance('./images/boots-rs.png', 'A/C Rain Boots');
-new ImagesInstance('./images/breakfast-rs.png', 'Morning Glory');
-new ImagesInstance('./images/bubblegum-rs.png', 'Meat-a-ball Gum');
-new ImagesInstance('./images/chair-rs.png', 'Butt Shaping Chair');
-new ImagesInstance('./images/cthulhu-rs.png', 'Octo-Monsto');
-new ImagesInstance('./images/dog-duck-rs.png', 'Duckie Dog');
-new ImagesInstance('./images/dragon-rs.png', 'Why not?');
-new ImagesInstance('./images/pen-rs.png', 'Pentencils');
-new ImagesInstance('./images/pet-sweep-rs.png', 'Finally');
-new ImagesInstance('./images/scissors-rs.png', 'Pizza Scissors');
-new ImagesInstance('./images/shark-rs.png', 'Cozy Shark Bite');
-new ImagesInstance('./images/sweep-rs.png', 'Kid Sweeps');
-new ImagesInstance('./images/tauntaun-rs.png', 'Intestinal Sleeping Bag');
-new ImagesInstance('./images/unicorn-rs.png', 'Unicorn Deliciousness');
-new ImagesInstance('./images/usb-rs.gif', 'USB Tail');
-new ImagesInstance('./images/water-can-rs.png', 'Pointless Watering Can');
-new ImagesInstance('./images/wine-glass-rs.png', 'Dribble Wine Glass');
+//Only if not in storage
+
+var lsData = localStorage.getItem('data');
+
+if (lsData) {
+  var parsedLsData = JSON.parse(lsData);
+
+  for (var i = 0; i < parsedLsData.length; i++) {
+    var newInstance = new ImagesInstance(parsedLsData[i].filepath, parsedLsData[i].name);
+    newInstance.numDisplayed = parsedLsData[i].numDisplayed;
+    newInstance.numClicked = parsedLsData[i].numClicked;
+    console.log(newInstance);
+    
+  }
+
+
+} else {
+
+  new ImagesInstance('./images/bag-rs.png', 'Other Worldly Travel');
+  new ImagesInstance('./images/banana-rs.png', 'Go Bananas');
+  new ImagesInstance('./images/bathroom-rs.png', 'Never Leave the Bathroom');
+  new ImagesInstance('./images/boots-rs.png', 'A/C Rain Boots');
+  new ImagesInstance('./images/breakfast-rs.png', 'Morning Glory');
+  new ImagesInstance('./images/bubblegum-rs.png', 'Meat-a-ball Gum');
+  new ImagesInstance('./images/chair-rs.png', 'Butt Shaping Chair');
+  new ImagesInstance('./images/cthulhu-rs.png', 'Octo-Monsto');
+  new ImagesInstance('./images/dog-duck-rs.png', 'Duckie Dog');
+  new ImagesInstance('./images/dragon-rs.png', 'Why not?');
+  new ImagesInstance('./images/pen-rs.png', 'Pentencils');
+  new ImagesInstance('./images/pet-sweep-rs.png', 'Finally');
+  new ImagesInstance('./images/scissors-rs.png', 'Pizza Scissors');
+  new ImagesInstance('./images/shark-rs.png', 'Cozy Shark Bite');
+  new ImagesInstance('./images/sweep-rs.png', 'Kid Sweeps');
+  new ImagesInstance('./images/tauntaun-rs.png', 'Intestinal Sleeping Bag');
+  new ImagesInstance('./images/unicorn-rs.png', 'Unicorn Deliciousness');
+  new ImagesInstance('./images/usb-rs.gif', 'USB Tail');
+  new ImagesInstance('./images/water-can-rs.png', 'Pointless Watering Can');
+  new ImagesInstance('./images/wine-glass-rs.png', 'Dribble Wine Glass');
+}
+
 
 
 // functions to create and remove listeners
@@ -79,6 +99,7 @@ function handleClick(event) {
       break;
     }
   }
+  storeData();
   getRandoImages();
 }
 
@@ -151,11 +172,14 @@ function prepareChartData() {
     borderColors.push(rbdr);
 
   }
-
   renderChart(labels, data, bgColors, borderColors);
 }
 
+function storeData () {
+  var dataToStore = JSON.stringify(ImagesInstance.list);
 
+  localStorage.setItem('data', dataToStore);
+}
 
 createListeners();
 getRandoImages();
