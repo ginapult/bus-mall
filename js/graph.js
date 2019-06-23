@@ -10,7 +10,7 @@ function renderChart(labels, data, bgColors, borderColors) {
       data: {
         labels: labels,
         datasets: [{
-          label: '# of Votes',
+          label: '% Votes',
           data: data,
           backgroundColor: bgColors,
           borderColor: borderColors
