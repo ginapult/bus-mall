@@ -1,7 +1,9 @@
 # Bus Mall
-*see Bus Mall deployed [here](https://ginapult.github.io/bus-mall/)*
 
 An app that displays potential products to individuals in focus groups (three products at a time, side-by-side-by-side). Manage the size and aspect ratio of the images and perhaps edit them a bit.
+
+## Screenshot
+*see Bus Mall deployed [here](https://ginapult.github.io/bus-mall/)*
 
 ![bus mall screenshot](https://github.com/ginapult/bus-mall/blob/master/busmall-screenshot.png)
 
