@@ -7,6 +7,7 @@ An app that displays potential products to individuals in focus groups (three pr
 
 ![bus mall screenshot](https://github.com/ginapult/bus-mall/blob/master/busmall-screenshot.png)
 
+## Whiteboards
 ![user stories whitboard](./images/white-board-1.jpg).
 ![functions whiteboard](./images/white-board-2.jpg).
 
