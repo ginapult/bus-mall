@@ -1,6 +1,6 @@
 'use strict';
 
-//construtor function to create an object for each image
+//constructor function to create an object for each image
 //properties: name, filepath, number of times that has been shown, number of times that hs been clicked ,array of each instance
 
 var numClicksAllowed = 25;
@@ -18,10 +18,6 @@ function ImagesInstance(filepath, name) {
 
 ImagesInstance.list = [];
 
-// Change the filepath
-
-//Only if not in storage
-
 var lsData = localStorage.getItem('data');
 
 if (lsData) {
@@ -32,10 +28,7 @@ if (lsData) {
     newInstance.numDisplayed = parsedLsData[i].numDisplayed;
     newInstance.numClicked = parsedLsData[i].numClicked;
     console.log(newInstance);
-    
   }
-
-
 } else {
 
   new ImagesInstance('./images/bag-rs.png', 'Other Worldly Travel');
@@ -59,7 +52,6 @@ if (lsData) {
   new ImagesInstance('./images/water-can-rs.png', 'Pointless Watering Can');
   new ImagesInstance('./images/wine-glass-rs.png', 'Dribble Wine Glass');
 }
-
 
 
 // functions to create and remove listeners
@@ -104,7 +96,7 @@ function handleClick(event) {
 }
 
 
-// function to get random images
+// get random images
 function getRandoImages() {
 
   // List of images from DOM
@@ -170,7 +162,6 @@ function prepareChartData() {
     data.push(ImagesInstance.list[i].percentClicked);
     bgColors.push(rbg);
     borderColors.push(rbdr);
-
   }
   renderChart(labels, data, bgColors, borderColors);
 }
